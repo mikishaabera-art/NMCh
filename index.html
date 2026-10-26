@@ -12,7 +12,34 @@ header h1{font-size:25px;margin:0}
 header p{margin:8px 0}
 nav{background:#e5efe7;padding:12px;text-align:center;position:sticky;top:0}
 nav a{display:inline-block;color:#124d32;text-decoration:none;font-weight:bold;margin:5px 9px}
-main{max-width:850px;margin:auto;padding:15px}
+main{max-width:850px;margin:auto;padding:15px}* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+header, nav, main, footer {
+  width: 100%;
+}
+
+main {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
 section{background:white;margin:18px 0;padding:20px;border-radius:12px;box-shadow:0 2px 8px #0001}
 h2{color:#124d32;border-bottom:2px solid #d4e5d7;padding-bottom:8px}
 .button{display:inline-block;background:#1877f2;color:white;padding:10px 17px;border-radius:7px;text-decoration:none;margin:5px}
