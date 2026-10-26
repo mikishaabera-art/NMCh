@@ -23,7 +23,42 @@ footer{background:#124d32;color:white;text-align:center;padding:20px}
 li{margin-bottom:7px}
 </style>
 </head>
-<body>
+<body><style>
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 210px;
+  height: 100%;
+  background: #123b2a;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 14px 8px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.sidebar a:hover {
+  background: #276749;
+}
+body {
+  margin-left: 220px;
+}
+@media (max-width: 600px) {
+  .sidebar {
+    width: 155px;
+  }
+  body {
+    margin-left: 165px;
+  }
+}
+</style>
 <header>
 <h1>ነክሪ እናት ቃል ሕይወት ቤተክርስቲያን</h1>
 <p>በፍቅር እንኑር፤ በቃሉ እንደግፍ።</p>
