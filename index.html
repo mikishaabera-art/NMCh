@@ -230,3 +230,52 @@ footer {
   <p style="text-align:center; color:#176b3a;"><strong>“ቃልህ ለእግሬ መብራት፥ ለመንገዴም ብርሃን ነው።” — መዝሙር 119፥105</strong></p>
 </section>
 </html>
+<style>
+.menu-button {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  background: #14532d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.site-menu {
+  display: none;
+  position: fixed;
+  top: 65px;
+  right: 15px;
+  z-index: 999;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px #777;
+}
+.site-menu a {
+  display: block;
+  padding: 10px;
+  color: #14532d;
+  text-decoration: none;
+}
+</style>
+
+<button class="menu-button" onclick="toggleMenu()" aria-label="ምናሌ">⋮</button>
+
+<nav class="site-menu" id="siteMenu">
+  <a href="#home">🏠 ዋና ገጽ</a>
+  <a href="#about">📖 ስለ ቤተክርስቲያኑ</a>
+  <a href="#videos">🎥 ቪዲዮዎች</a>
+  <a href="#contact">📞 ያግኙን</a>
+  <a href="https://github.com/mikishaabera-art/NMCh">⚙️ የWebsite አስተዳደር</a>
+</nav>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('siteMenu');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+</script>
