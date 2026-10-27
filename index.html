@@ -99,12 +99,42 @@ body {
 <p>“ቃልህ ለእግሬ መብራት፣ ለመንገዴም ብርሃን ነው።” — መዝሙር 119፥105</p>
 </header>
 
-<nav>
-<a href="#home">ዋና ገጽ</a>
-<a href="#about">ስለ ቤተክርስቲያን</a>
-<a href="#leaders">አገልጋዮች</a>
-<a href="#service">የአገልግሎት ጊዜ</a>
-<a href="#contact">አድራሻ</a>
+<style>
+.menu-button {
+  display: block;
+  background: #124d32;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 26px;
+  cursor: pointer;
+  margin-left: auto;
+}
+.menu-links {
+  display: none;
+  text-align: right;
+  padding: 10px;
+  background: #e5efe7;
+}
+.menu-links a {
+  display: block;
+  color: #124d32;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px;
+}
+.menu-links.open {
+  display: block;
+}
+</style><nav>
+  <button class="menu-button" onclick="document.getElementById('menuLinks').classList.toggle('open')">⋮</button>
+  <div class="menu-links" id="menuLinks">
+    <a href="#home">ዋና ገጽ</a>
+    <a href="#about">📖 ስለ ቤተክርስቲያን</a>
+    <a href="#leaders">አገልጋዮች</a>
+    <a href="#service">የአገልግሎት ጊዜ</a>
+    <a href="#contact">አድራሻ</a>
+  </div>
 </nav>
 
 <main>
