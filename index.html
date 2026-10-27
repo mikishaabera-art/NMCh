@@ -77,6 +77,8 @@ li{margin-bottom:7px}
 </head>
 <body><style>
 .sidebar {
+ display: none;
+ 
   position: fixed;
   top: 0;
   left: 0;
@@ -130,17 +132,30 @@ body {
 }
 .menu-links {
   display: none;
-  text-align: right;
+  position: fixed;
+  top: 55px;
+  left: 0;
+  width: 230px;
+  max-width: 75vw;
+  max-height: calc(100vh - 55px);
+  overflow-y: auto;
+  text-align: left;
   padding: 10px;
   background: #e5efe7;
+  z-index: 10000;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
 }
+
 .menu-links a {
   display: block;
   color: #124d32;
   text-decoration: none;
   font-weight: bold;
-  padding: 8px;
+  padding: 10px 8px;
+  border-bottom: 1px solid #d0dfd3;
+  white-space: normal;
 }
+
 .menu-links.open {
   display: block;
 }
