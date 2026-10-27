@@ -353,5 +353,16 @@ padding: 25px 15px;
 <p>ነክሪ እናት ቃል ሕይወት ቤተክርስቲያን</p>
 <p>በፍቅር እንኑር፤ በቃሉ እንደግፍ።</p>
 </footer>
-</body>
+</body><script>
+function showSection(id) {
+  document.querySelectorAll("main section").forEach(section => {
+    section.classList.add("hidden");
+  });
+
+  const selected = document.getElementById(id);
+  if (selected) {
+    selected.classList.remove("hidden");
+  }
+}
+</script>
 </html>
