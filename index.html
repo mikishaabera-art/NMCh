@@ -456,7 +456,9 @@ const translations = {
     "Designed & Developed By: Mikisha Abera"
 };
 
-const originalTexts = new Map();
+const originalTexts = new Map();const dawTranslations = {
+  // የዳውሮ ትርጉሞችን እዚህ እንጨምራለን
+};
 
 function changeLanguage(language) {
   const elements = document.querySelectorAll("h1, h2, h3, p, a, li");
@@ -469,10 +471,12 @@ function changeLanguage(language) {
     const original = originalTexts.get(element);
 
     if (language === "en" && translations[original]) {
-      element.textContent = translations[original];
-    } else {
-      element.textContent = original;
-    }
+  element.textContent = translations[original];
+} else if (language === "daw" && dawTranslations[original]) {
+  element.textContent = dawTranslations[original];
+} else {
+  element.textContent = original;
+}
   });
 }
 
