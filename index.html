@@ -431,4 +431,56 @@ function showSection(id) {
   </a>
 </section>
 
-</html>
+</html><script>
+const translations = {
+  "ዋና ገጽ": "Home",
+  "📖 ስለ ቤተክርስቲያን": "📖 About Our Church",
+  "🙏 የአገልጋዮች | Our Ministers": "🙏 Our Ministers",
+  "📜 የቤተክርስቲያን ታሪክ | Church History": "📜 Church History",
+  "🎬 የቤተክርስቲያን ቪዲዮዎች": "🎬 Church Videos",
+  "የአገልግሎት ጊዜ": "Service Times",
+  "🎬 የቤተክርስቲያን ቪዲዮዎች | Church Videos": "🎬 Church Videos",
+  "🎵 የመዝሙርና የስብከት ገጽ | Worship & Sermons": "🎵 Worship & Sermons",
+  "አድራሻ": "Contact",
+  "እንኳን ወደ ቤተክርስቲያናችን በደህና መጡ!": "Welcome to Our Church!",
+  "የቤተክርስቲያናችን ታሪክ": "Our Church History",
+  "የቤተክርስቲያኑ አገልጋዮች": "Our Church Ministers",
+  "የቤተክርስቲያኑ ዋና ሰብሳቢ": "Church Chairman",
+  "አድራሻና የመገናኛ መረጃ": "Address and Contact Information",
+  "📸 ፎቶና ቪዲዮ የማስተላለፍ ፈቃድ": "📸 Photo and Video Publishing Permission",
+  "📝 ፈቃድ ይጠይቁ": "📝 Request Permission",
+  "Facebook Page": "Facebook Page",
+  "YouTube": "YouTube",
+  "TikTok": "TikTok",
+  "Designed & Developed By: Mikisha Abera":
+    "Designed & Developed By: Mikisha Abera"
+};
+
+const originalTexts = new Map();
+
+function changeLanguage(language) {
+  const elements = document.querySelectorAll("h1, h2, h3, p, a, li");
+
+  elements.forEach(element => {
+    if (!originalTexts.has(element)) {
+      originalTexts.set(element, element.textContent.trim());
+    }
+
+    const original = originalTexts.get(element);
+
+    if (language === "en" && translations[original]) {
+      element.textContent = translations[original];
+    } else {
+      element.textContent = original;
+    }
+  });
+}
+
+const selector = document.getElementById("languageSelect");
+
+if (selector) {
+  selector.addEventListener("change", function () {
+    changeLanguage(this.value);
+  });
+}
+</script>
