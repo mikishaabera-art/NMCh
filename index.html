@@ -272,7 +272,18 @@ padding: 25px 15px;
   display: block;
 }
 </style><nav>
+  <div class="top-controls">
+  <select id="languageSelect" aria-label="Choose language">
+    <option value="am">🇪🇹 አማርኛ</option>
+    <option value="en">🇬🇧 English</option>
+    <option value="om">🌿 Afaan Oromoo</option>
+    <option value="daw">🌍 Dawro</option>
+  </select>
+
   <button class="menu-button" onclick="document.getElementById('menuLinks').classList.toggle('open')">⋮</button>
+</div>
+
+
   <div class="menu-links" id="menuLinks">
     <a href="#home">ዋና ገጽ</a>
     <a href="about.html">📖 ስለ ቤተክርስቲያን</a>
