@@ -480,7 +480,9 @@ const translations = {
 const originalTexts = new Map();
 
 function changeLanguage(language) {
-  const elements = document.querySelectorAll("h1, h2, h3, p, a, li");
+  const elements = document.querySelectorAll(
+  "h1, h2, h3, h4, p, a, li, span, button"
+);
 
   elements.forEach(element => {
     if (!originalTexts.has(element)) {
