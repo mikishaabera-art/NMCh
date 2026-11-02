@@ -521,6 +521,38 @@ if (selector) {
     changeLanguage(this.value);
   });
 }
+ function showTopic(topic) {
+  const topics = {
+    church: {
+      title: "⛪ Church | ቤተክርስቲያን",
+      description: "ቤተክርስቲያናችን በእምነት፣ በፍቅርና በአንድነት ማህበረሰቡን ታገለግላለች።"
+    },
+    christianity: {
+      title: "✝️ Christianity | ክርስትና",
+      description: "ክርስትና በኢየሱስ ክርስቶስ ማመን፣ በፍቅር መኖርና ቃሉን መከተል ነው።"
+    },
+    bible: {
+      title: "📖 Bible | መጽሐፍ ቅዱስ",
+      description: "መጽሐፍ ቅዱስ የእግዚአብሔር ቃል ነው።"
+    },
+    prayer: {
+      title: "🙏 Prayer | ጸሎት",
+      description: "ጸሎት ከእግዚአብሔር ጋር የምንገናኝበት መንገድ ነው።"
+    },
+    worship: {
+      title: "🎵 Worship & Sermons | አምልኮና ስብከት",
+      description: "በዝማሬ፣ በአምልኮና በቃሉ ትምህርት እግዚአብሔርን እናከብራለን።"
+    }
+  };
+
+  const selected = topics[topic];
+  if (!selected) return;
+
+  document.getElementById("topic-title").textContent = selected.title;
+  document.getElementById("topic-description").textContent = selected.description;
+  document.getElementById("topic-content").style.display = "block";
+}
+ 
 </script>
      
  <section style="background:#e5efe7; padding:25px; margin:20px auto; text-align:center; border-radius:12px;">
