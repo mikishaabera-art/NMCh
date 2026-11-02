@@ -381,15 +381,16 @@ body {
 </section>
 </main>
  <section id="topics" style="background:#e5efe7; padding:25px; margin:20px auto; border-radius:12px; text-align:center;">
-  <h2>📌 Topics</h2>
-  <p>የሚፈልጉትን ርዕስ ይምረጡ።</p>
-
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px;">
-    <button>⛪ Church</button>
-    <button>✝️ Christianity</button>
-    <button>📖 Bible</button>
-    <button>🙏 Prayer</button>
-    <button>🎵 Worship &amp; Sermons</button>
+  <h2>📌 Topics | የትምህርት ርዕሶች</h2>
+  <p>የሚፈልጉትን ርዕስ ይምረጡ።</p>  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px;">
+    <button onclick="showTopic('church')">⛪ Church</button>
+    <button onclick="showTopic('christianity')">✝️ Christianity</button>
+    <button onclick="showTopic('bible')">📖 Bible</button>
+    <button onclick="showTopic('prayer')">🙏 Prayer</button>
+    <button onclick="showTopic('worship')">🎵 Worship &amp; Sermons</button>
+  </div>  <div id="topic-content" style="display:none; margin-top:20px; padding:18px; background:white; border-radius:10px;">
+    <h3 id="topic-title"></h3>
+    <p id="topic-description"></p>
   </div>
 </section>
 <footer>
