@@ -1,9 +1,10 @@
- 
+<!DOCTYPE html>
 <html lang="am">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>የቤተክርስቲያን ማስታወቂያዎች</title>
+
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -32,21 +33,116 @@ header {
   box-shadow: 0 2px 8px #0001;
 }
 h2 { color: #124d32; }
+.notice p { line-height: 1.7; }
+.date { color: #777; font-size: 14px; }
+#messages { text-align: center; padding: 20px; }
 </style>
 </head>
+
 <body>
 
 <header>
-  <h1>📢 የቤተክርስቲያን ማስታወቂያዎች</h1>
-  <p>ነክሪ እናት ቃል ሕይወት ቤተክርስቲያን</p>
+<h1>📢 የቤተክርስቲያን ማስታወቂያዎች</h1>
+<p>ነክሪ እናት ቃል ሕይወት ቤተክርስቲያን</p>
 </header>
 
 <div class="container">
-  <div class="notice">
-    <h2>እንኳን ወደ ማስታወቂያ ገጻችን በደህና መጡ!</h2>
-    <p>የቤተክርስቲያናችንን አዳዲስ ማስታወቂያዎች፣ የአምልኮ ፕሮግራሞችንና ልዩ ዝግጅቶችን እዚህ ያገኛሉ።</p>
-  </div>
+<div class="notice">
+<h2>እንኳን ወደ ማስታወቂያ ገጻችን በደህና መጡ!</h2>
+<p>የቤተክርስቲያናችንን አዳዲስ ማስታወቂያዎች፣ የአምልኮ ፕሮግራሞችንና ልዩ ዝግጅቶችን እዚህ ያገኛሉ።</p>
 </div>
 
-</body>
-</html>
+<div id="messages">⏳ ማስታወቂያዎችን በመጫን ላይ...</div>
+<div id="announcements"></div>
+</div>
+
+<script>
+const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsGYCySqXhwNkapFIoqzdqhcCP6jOulUO4wpl8L6MQQ3wEFODTEXXjwfQBHju3o4qrs3-v2hMunN-1/pub?gid=442434985&single=true&output=csv";
+
+function parseCSV(text) {
+  const rows = [];
+  let row = [];
+  let cell = "";
+  let quoted = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+
+    if (c === '"' && quoted && text[i + 1] === '"') {
+      cell += '"';
+      i++;
+    } else if (c === '"') {
+      quoted = !quoted;
+    } else if (c === "," && !quoted) {
+      row.push(cell);
+      cell = "";
+    } else if ((c === "\n" || c === "\r") && !quoted) {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      row.push(cell);
+      if (row.some(v => v.trim() !== "")) rows.push(row);
+      row = [];
+      cell = "";
+    } else {
+      cell += c;
+    }
+  }
+
+  row.push(cell);
+  if (row.some(v => v.trim() !== "")) rows.push(row);
+  return rows;
+}
+
+async function loadAnnouncements() {
+  const messages = document.getElementById("messages");
+  const area = document.getElementById("announcements");
+
+  try {
+    const response = await fetch(csvUrl + "&refresh=" + Date.now());
+
+    if (!response.ok) {
+      throw new Error("Google Sheet could not load");
+    }
+
+    const text = await response.text();
+    const rows = parseCSV(text);
+
+    const approved = rows.slice(1).filter(row =>
+      (row[5] || "").trim() === "ተፈቅዷል"
+    );
+
+    area.innerHTML = "";
+
+    if (approved.length === 0) {
+      messages.textContent = "አሁን የተፈቀደ ማስታወቂያ የለም።";
+      return;
+    }
+
+    messages.textContent = "";
+
+    approved.forEach(row => {
+      const card = document.createElement("div");
+      card.className = "notice";
+
+      const title = document.createElement("h2");
+      title.textContent = "📢 " + (row[1] || "");
+
+      const details = document.createElement("p");
+      details.textContent = row[2] || "";
+
+      const date = document.createElement("p");
+      date.className = "date";
+      date.textContent = "📅 የተለጠፈበት ቀን፦ " + (row[0] || "");
+
+      const eventDate = document.createElement("p");
+      eventDate.textContent = "🗓️ የዝግጅት ቀን፦ " + (row[3] || "");
+
+      const place = document.createElement("p");
+      place.textContent = "📍 ቦታ፦ " + (row[4] || "");
+
+      card.append(title, details, date, eventDate, place);
+      area.appendChild(card);
+    });
+
+  } catch (error) {
+    messages.textContent =
+      "ማስታወቂያዎችን ማምጣት አልተቻለም። እባክዎ ቆይተ
